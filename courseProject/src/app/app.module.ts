@@ -6,24 +6,51 @@ import { RegistrerenComponent } from './components/registreren/registreren.compo
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { TimelineComponent } from './components/timeline/timeline.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { AuthGuard } from './services/authGuard';
+import { HomeComponent } from './components/home/home.component';
+import { PostAdComponent } from './components/post-ad/post-ad.component';
+import { GetMyAdsComponent } from './components/get-my-ads/get-my-ads.component';
+import { UpdateAdComponent } from './components/update-ad/update-ad.component';
 
 let routes: Routes = [
-  { path: 'labs', component: AppComponent},
+  { path:'', component: LoginComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegistrerenComponent}
-];
+  { path: 'register', component: RegistrerenComponent},
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'timeline', component: TimelineComponent, canActivate: [AuthGuard] },
+  { path: 'add', component: PostAdComponent, canActivate: [AuthGuard] },
+  { path: 'userads', component: GetMyAdsComponent, canActivate: [AuthGuard] },
+  { path: 'edit/:id', component: UpdateAdComponent, canActivate: [AuthGuard] }
+  // { path: 'timeline', component: TimelineComponent, canActivate: [AuthGuard]}
+]; 
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrerenComponent,
     LoginComponent,
+    TimelineComponent,
+    NavBarComponent,
+    HomeComponent,
+    PostAdComponent,
+    GetMyAdsComponent,
+    UpdateAdComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 1000,
+      progressBar: true,
+      preventDuplicates: true
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

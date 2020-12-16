@@ -6,5 +6,6 @@ export interface User {
     adres: string;
     postcode: string;
     woonplaats: string;
+    isAkkoord: boolean;
     id?: number;
 }

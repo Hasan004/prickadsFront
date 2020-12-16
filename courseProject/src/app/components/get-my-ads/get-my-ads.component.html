@@ -1,0 +1,27 @@
+<app-nav-bar></app-nav-bar>
+<div class="text-white m-4">
+
+    <h2 class="mt-4 mb-5">The Contacts</h2>
+    
+    <table class="table text-white">
+      <tr >
+          <th scope="col">id</th>
+        <th scope="col">Naam</th>
+        <th scope="col">prijs</th>
+        <th scope="col">Omschrijving</th>
+        <th scope="col">Action</th>
+      </tr>
+      <tr scope="row" *ngFor="let c of adsByIdUpdated$ | async">
+          <td>{{c.id}}</td>
+        <td>{{c.naam}}</td>
+        <td>{{c.prijs}}</td>
+        <td>{{c.omschrijving}}</td>
+        <td>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <a [routerLink]="['/edit/'+c.id]"><button class="btn btn-primary mr-3">Edit</button></a>
+            <button class="btn btn-danger" (click)="deleteUser(c)">Delete</button>
+          </div>
+        </td>
+      </tr>
+    </table>
+    </div>

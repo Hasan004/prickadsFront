@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/models/User';
 import { UserService } from 'src/app/services/user.service';
 
@@ -10,17 +11,23 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class RegistrerenComponent {
 
-  users: User[];
-
   newUser = {} as User;
 
-  constructor(public service : UserService, private router : Router) { }
+  constructor(public service : UserService, private router : Router, private toastr : ToastrService) { }
 
   addUser() : void{
-    this.service.add(this.newUser);
-    console.log("User met naam " + this.newUser.naam + " is in de database opgeslagen")
-    this.newUser = {} as User;
-    this.router.navigate(['/login'])
+      this.service.add(this.newUser);
+
+      this.service.errorRegister$.subscribe(err => this.toastr.info("U heeft al een account mate"))
+
+      this.service.registerUserUpdated$.subscribe(g => {
+        this.newUser = {} as User;
+        this.toastr.success("Bedankt we hebben uw registratie succesvol ontvangen!", "Gelukt!")
+        console.log("User met naam " + this.newUser.naam + " is in de database opgeslagen")
+        setTimeout(()=>{
+            this.router.navigate(['/login'])
+          }, 1500)
+        }
+      );
   }
-n
 }

@@ -1,40 +1,42 @@
 <div class="sidenav">
-    <div class="login-main-text">
+    <div id="head" class="login-main-text">
+        <img src="assets/images/image.png" class="rounded mx-auto d-block">
        <h1 class="mb-5 text-center">Registreer je bij PrickAds!</h1>
        <h4 class="mb-5 text-center">Wat leuk dat je ons gezin komt joinen!</h4>
-       <p class="text-center">Prick Ads de website voor jouw producten</p>
+       <p class="text-center mb-4">Prick Ads de website voor jouw producten</p>
     </div>
  </div>
  <div class="main">
     <div class="col-md-8">
        <div class="login-form">
            <h3 class="text-white mb-5">Registratie Formulier</h3> 
-          <form (ngSubmit)="addUser()" #f="ngForm">
+          <form (ngSubmit)="addUser()" #f="ngForm" ngNativeValidate>
              <div class="form-group text-white">
-                <label><i class="glyphicon glyphicon-user"></i> Naam</label>
-                <input type="text" id="naam" name="naam" class="form-control" placeholder="Naam" [(ngModel)]="newUser.naam">
+                <label><i class="glyphicon glyphicon-user"></i> Naam *</label>
+                <input type="text" id="naam" name="naam" class="form-control" placeholder="Naam" [(ngModel)]="newUser.naam" required minlength="2">
              </div>
              <div class="form-group text-white">
-                <label><i class="glyphicon glyphicon-envelope"></i> Email Adres</label>
-                <input type="text" id="email" name="email" class="form-control" placeholder="Email Adres" [(ngModel)]="newUser.email">
+                <label><i class="glyphicon glyphicon-envelope"></i> Email Adres *</label>
+                <input type="text" id="email" name="email" class="form-control" placeholder="Email Adres" [(ngModel)]="newUser.email" required minlength="5" pattern="">
              </div>
              <div class="form-group text-white">
-                <label><i class="glyphicon glyphicon-lock"></i> Wachtwoord</label>
-                <input type="password" id="password" name="password" class="form-control" placeholder="Wachtwoord" [(ngModel)]="newUser.password">
+                <label><i class="glyphicon glyphicon-lock"></i> Wachtwoord *</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Wachtwoord" [(ngModel)]="newUser.password" required minlength="6" >
              </div>
              <div class="form-group text-white">
-                <label><i class="glyphicon glyphicon-home"></i> Adres </label>
-                <input type="text" id="adres" name="adres" class="form-control" placeholder="Adres" [(ngModel)]="newUser.adres">
+                <label><i class="glyphicon glyphicon-home"></i> Adres *</label>
+                <input type="text" id="adres" name="adres" class="form-control" placeholder="Adres" [(ngModel)]="newUser.adres" required minlength="5">
              </div>
             <div class="form-group text-white">
-                <label><i class="glyphicon glyphicon-home"></i> Postcode</label>
-                <input type="text" id="postcode" name="postcode" class="form-control" placeholder="Postcode" [(ngModel)]="newUser.postcode">
+                <label><i class="glyphicon glyphicon-home"></i> Postcode *</label>
+                <input type="text" id="postcode" name="postcode" class="form-control" placeholder="Postcode" [(ngModel)]="newUser.postcode" required minlength="6" maxlength="6" pattern="[1-9][0-9]{3}\s?[a-zA-Z]{2}">
              </div>
              <div class="form-group text-white">
-                <label><i class="glyphicon glyphicon-home"></i> Woonplaats</label>
-                <input type="text" id="woonplaats" name="woonplaats" class="form-control" placeholder="Woonplaats" [(ngModel)]="newUser.woonplaats">
+                <label><i class="glyphicon glyphicon-home"></i> Woonplaats *</label>
+                <input type="text" id="woonplaats" name="woonplaats" class="form-control" placeholder="Woonplaats" [(ngModel)]="newUser.woonplaats"required minlength="3">
              </div>
-             <button type="submit" class="btn btn-black mr-5 mt-2" >Registreren</button>
+             <input type="checkbox" id="isAkkoord" name="isAkkoord" [(ngModel)]="newUser.isAkkoord"><label class="text-white ml-2" > Ga akoord met onze algemene voorwaarden en ons privacy beleid. *</label> <br>
+             <button type="submit" class="btn btn-black mr-5 mt-2" [disabled]="!newUser.isAkkoord ">Registreren</button>
           </form>
        </div>
     </div>

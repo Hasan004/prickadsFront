@@ -1,5 +1,8 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Subject } from 'rxjs';
 import { User } from 'src/app/models/User';
 import { UserService } from 'src/app/services/user.service';
 
@@ -11,15 +14,21 @@ import { UserService } from 'src/app/services/user.service';
 export class LoginComponent {
 
   users: User[];
-
   newUser = {} as User;
 
-  constructor(public service : UserService, private router : Router) { }
+  error$ = this.service.error$;
 
-  addUser() : void{
+  constructor(public service: UserService, private router: Router, private toastr: ToastrService) { }
+
+  loginUser(): void {
     this.service.login(this.newUser);
     this.newUser = {} as User;
-    // this.router.navigate(['/list'])
-  }
 
+    this.error$.subscribe(errMess => this.toastr.error("Uw inloggegevens zijn onjuist", "Niet gelukt!"));
+
+    this.service.activeGebruikerUpdated$.subscribe(g => {
+      this.toastr.success("U bent succesvol ingelogd!", "gelukt");
+      this.router.navigate(['/home'])
+    });
+  }
 }

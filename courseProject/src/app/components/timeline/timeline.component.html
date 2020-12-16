@@ -1,0 +1,23 @@
+<app-nav-bar></app-nav-bar>
+<div>
+    <h1 class="text-white text-center titel">Tijdlijn!</h1>
+</div>
+<div>
+    <h4 class="text-white-50 text-center mt-5">Bekijk hier de advertenties van alle gebruikers</h4>
+    <div *ngFor="let c of ads$ | async" class="text-white body mt-5">
+        <div class="blog-post">
+            <div class="blog-post_img">
+                <img src="assets/images/prikbord.jpg">
+            </div>
+            <div class="blog-post_info">
+                <h1 class="blog-post_title text-center">{{c.naam}}</h1>
+                <div class="blog-post_date">
+                    <span >Gebruiker: </span>
+                    <span class="ml-5">{{c.userEmail}}</span>
+                </div> <br>
+                <p class="naam">Omschrijving</p>
+                <p class="blog-post_text ml-5">{{c.omschrijving}}</p><br>
+                <p class="p">€ {{c.prijs}}</p>
+        </div>
+    </div> 
+</div>
