@@ -15,6 +15,7 @@ import { HomeComponent } from './components/home/home.component';
 import { PostAdComponent } from './components/post-ad/post-ad.component';
 import { GetMyAdsComponent } from './components/get-my-ads/get-my-ads.component';
 import { UpdateAdComponent } from './components/update-ad/update-ad.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 let routes: Routes = [
   { path:'', component: LoginComponent},
@@ -24,8 +25,8 @@ let routes: Routes = [
   { path: 'timeline', component: TimelineComponent, canActivate: [AuthGuard] },
   { path: 'add', component: PostAdComponent, canActivate: [AuthGuard] },
   { path: 'userads', component: GetMyAdsComponent, canActivate: [AuthGuard] },
-  { path: 'edit/:id', component: UpdateAdComponent, canActivate: [AuthGuard] }
-  // { path: 'timeline', component: TimelineComponent, canActivate: [AuthGuard]}
+  { path: 'edit/:id', component: UpdateAdComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] }
 ]; 
 
 @NgModule({
@@ -39,6 +40,7 @@ let routes: Routes = [
     PostAdComponent,
     GetMyAdsComponent,
     UpdateAdComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

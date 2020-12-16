@@ -11,6 +11,8 @@ export class UserService {
     activeGebruikerUpdated$ = new Subject<User>();
     registerUserUpdated$ = new Subject<User>();
 
+    getById$ = new Subject<User>();
+
     activeGebruiker : User;
     registerUser: User;
 

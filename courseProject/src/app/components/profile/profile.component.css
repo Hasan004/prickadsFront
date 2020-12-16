@@ -1,0 +1,17 @@
+.details li {
+    list-style: none;
+  }
+  li {
+      margin-bottom:10px;
+  }
+
+  .body{
+      margin-top: 100px;
+      color: white;
+  }
+  .jumbotron{
+      background-color:rgba(14, 28, 43, 0.658);
+  }
+  h1{
+      margin-bottom: 50px;
+  }
