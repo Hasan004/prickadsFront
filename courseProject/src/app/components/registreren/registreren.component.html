@@ -35,7 +35,7 @@
                 <label><i class="glyphicon glyphicon-home"></i> Woonplaats *</label>
                 <input type="text" id="woonplaats" name="woonplaats" class="form-control" placeholder="Woonplaats" [(ngModel)]="newUser.woonplaats"required minlength="3">
              </div>
-             <input type="checkbox" id="isAkkoord" name="isAkkoord" [(ngModel)]="newUser.isAkkoord"><label class="text-white ml-2" > Ga akoord met onze algemene voorwaarden en ons privacy beleid. *</label> <br>
+             <input type="checkbox" id="isAkkoord" name="isAkkoord" [(ngModel)]="newUser.isAkkoord"><label class="text-white ml-2" > Ga akkoord met onze algemene voorwaarden en ons privacy beleid. *</label> <br>
              <button type="submit" class="btn btn-black mr-5 mt-2" [disabled]="!newUser.isAkkoord ">Registreren</button>
           </form>
        </div>

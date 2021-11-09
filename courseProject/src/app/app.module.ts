@@ -21,13 +21,15 @@ let routes: Routes = [
   { path:'', component: LoginComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegistrerenComponent},
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'timeline', component: TimelineComponent, canActivate: [AuthGuard] },
-  { path: 'add', component: PostAdComponent, canActivate: [AuthGuard] },
-  { path: 'userads', component: GetMyAdsComponent, canActivate: [AuthGuard] },
-  { path: 'edit/:id', component: UpdateAdComponent, canActivate: [AuthGuard] },
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] }
+  { path: 'home', component: HomeComponent,  },
+  { path: 'timeline', component: TimelineComponent,  },
+  { path: 'add', component: PostAdComponent,  },
+  { path: 'userads', component: GetMyAdsComponent,  },
+  { path: 'edit/:id', component: UpdateAdComponent,  },
+  { path: 'profile', component: ProfileComponent,  }
 ]; 
+
+// canActivate: [AuthGuard]
 
 @NgModule({
   declarations: [

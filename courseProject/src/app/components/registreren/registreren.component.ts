@@ -18,7 +18,7 @@ export class RegistrerenComponent {
   addUser() : void{
       this.service.add(this.newUser);
 
-      this.service.errorRegister$.subscribe(err => this.toastr.info("U heeft al een account mate"))
+      this.service.errorRegister$.subscribe(err => this.toastr.info("U heeft al een bestaand acccount met de opgegeven emailadres"))
 
       this.service.registerUserUpdated$.subscribe(g => {
         this.newUser = {} as User;
